@@ -9,8 +9,8 @@ WORKDIR /predict_future_sales
 COPY . .
 RUN mkdir model
 
-EXPOSE 5000
-
 ENTRYPOINT ["python"]
 
-CMD ["run.py"]
+EXPOSE $PORT
+
+CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT app:app
