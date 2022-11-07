@@ -9,7 +9,7 @@ WORKDIR /predict_future_sales
 COPY . .
 RUN mkdir model
 
-ENTRYPOINT ["python"]
+ENTRYPOINT ["python3"]
 
 EXPOSE $PORT
 
