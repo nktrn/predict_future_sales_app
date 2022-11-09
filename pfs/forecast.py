@@ -10,6 +10,8 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
     feature_list = request.form.to_dict()
-    predict = model.predict(feature_list['item_id'])
-    predict = round(predict)
-    return f'{predict}'
+    predict_plot, pred = model.predict(feature_list)
+    return f"""
+  <p>prediction: {pred}</p>
+  <img src="data:image/png;base64,{predict_plot}" alt="Red dot" />
+    """
