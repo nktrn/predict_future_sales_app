@@ -12,6 +12,9 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
     feature_list = request.form.to_dict()
-    predict = model.predict(feature_list)
+    predict, img = model.predict(feature_list)
 
-    return f'{predict}'
+    return f"""
+    <p>Prediction: {predict}</p>
+    <div style="text-align: center">{img}</div>
+    """
