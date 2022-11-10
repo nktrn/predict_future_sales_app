@@ -1,6 +1,8 @@
 from flask import render_template, request
 
 from pfs import app, model
+import pandas as pd
+
 
 @app.route('/')
 def home():
@@ -10,8 +12,6 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
     feature_list = request.form.to_dict()
-    predict_plot, pred = model.predict(feature_list)
-    return f"""
-  <p>prediction: {pred}</p>
-  <img src="data:image/png;base64,{predict_plot}" alt="Red dot" />
-    """
+    predict = model.predict(feature_list)
+
+    return f'{predict}'

@@ -6,32 +6,31 @@ import base64
 from matplotlib import pyplot as plt
 
 
+
 class SalesPrediction:
     def __init__(self, model_path):
         self.model = CatBoostRegressor().load_model(model_path)
+        self.items_data = pd.read_csv('pfs/data/items.csv')
+        self.shops_data = pd.read_csv('pfs/data/shop_df.csv')
+        self.featues = ['date_block_num', 'shop_id', 'item_id', 'lag', 'item_category_id', 'shop_city', 'shop_location']
     
-    def predict(self, shop_id):
-        data = [34, int(shop_id['shop_id']), 30, 10, 40, 'Балашиха', 'shop. center']
-        predict = 0#self.model.predict(data)
-        f = ['date_block_num', 'shop_id', 'item_id', 'lag', 'item_category_id', 'shop_city', 'shop_location']
-        label = ['label']
-        df = pd.DataFrame(
-            columns=f + label
-        )
-        data += [predict]
-        df.loc[len(df)] = data
 
-        explainer = shap.TreeExplainer(self.model)
-        shap_values = explainer(df[f])
-        buf = BytesIO()
-        #shap.force_plot(explainer.expected_value, shap_values, df[f], matplotlib = True, show = False)
-        shap.waterfall_plot(shap_values[0], show = False)
+    def extract_features(self, request: dict):
+        features = pd.DataFrame(columns=self.featues)
 
-        plt.savefig(buf,
-            format = "png",
-            dpi = 150,
-            bbox_inches = 'tight')
+        features['date_block_num'] = [34]
+        features['shop_id'] = [request['shop_id']]
+        features['item_id'] = [request['item_id']]
+        features['lag'] = [34 % 12]
+        features['item_category_id'] = self.items_data[self.items_data['item_id'] == int(request['item_id'])]['item_category_id'].item()
+        features['shop_city'] = self.shops_data[self.shops_data['shop_id'] == int(request['shop_id'])]['shop_city'].item()
+        features['shop_location'] = self.shops_data[self.shops_data['shop_id'] == int(request['shop_id'])]['shop_location'].item()
         
-        dataToTake = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return dataToTake, predict
+        return features
+
+
+    def predict(self, request: dict):
+        features = self.extract_features(request)
+        prediction = self.model.predict(features)
+        return prediction
         

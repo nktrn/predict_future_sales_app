@@ -5,12 +5,72 @@
      
     <div>
       <form action="/predict" method="POST">
-        <label for="shop_id">Choose item's id:</label>
+        <label for="shop_id">Choose shop's name:</label>
         <select id="shop_id" name="shop_id">
-          <option value="1">1</option>
-          <option value="3">3</option>
-          <option value="10">10</option>
+          <option value="0">!Якутск Орджоникидзе, 56 фран</option>
+          <option value="1">!Якутск ТЦ "Центральный" фран</option>
+          <option value="2">Адыгея ТЦ "Мега"</option>
+          <option value="3">Балашиха ТРК "Октябрь-Киномир"</option>
+          <option value="4">Волжский ТЦ "Волга Молл"</option>
+          <option value="5">Вологда ТРЦ "Мармелад"</option>
+          <option value="6">Воронеж (Плехановская, 13)</option>
+          <option value="7">Воронеж ТРЦ "Максимир"</option>
+          <option value="8">Воронеж ТРЦ Сити-Парк "Град"</option>
+          <option value="9">Выездная Торговля</option>
+          <option value="10">Жуковский ул. Чкалова 39м?</option>
+          <option value="11">Жуковский ул. Чкалова 39м²</option>
+          <option value="12">Интернет-магазин ЧС</option>
+          <option value="13">Казань ТЦ "Бехетле"</option>
+          <option value="14">Казань ТЦ "ПаркХаус" II</option>
+          <option value="15">Калуга ТРЦ "XXI век"</option>
+          <option value="16">Коломна ТЦ "Рио"</option>
+          <option value="17">Красноярск ТЦ "Взлетка Плаза"</option>
+          <option value="18">Красноярск ТЦ "Июнь"</option>
+          <option value="19">Курск ТЦ "Пушкинский"</option>
+          <option value="20">Москва "Распродажа"</option>
+          <option value="21">Москва МТРЦ "Афи Молл"</option>
+          <option value="22">Москва Магазин С21</option>
+          <option value="23">Москва ТК "Буденовский" (пав.А2)</option>
+          <option value="24">Москва ТК "Буденовский" (пав.К7)</option>
+          <option value="25">Москва ТРК "Атриум"</option>
+          <option value="26">Москва ТЦ "Ареал" (Беляево)</option>
+          <option value="27">Москва ТЦ "МЕГА Белая Дача II"</option>
+          <option value="28">Москва ТЦ "МЕГА Теплый Стан" II</option>
+          <option value="29">Москва ТЦ "Новый век" (Новокосино)</option>
+          <option value="30">Москва ТЦ "Перловский"</option>
+          <option value="31">Москва ТЦ "Семеновский"</option>
+          <option value="32">Москва ТЦ "Серебряный Дом"</option>
+          <option value="33">Мытищи ТРК "XL-3"</option>
+          <option value="34">Н.Новгород ТРЦ "РИО"</option>
+          <option value="35">Н.Новгород ТРЦ "Фантастика"</option>
+          <option value="36">Новосибирск ТРЦ "Галерея Новосибирск"</option>
+          <option value="37">Новосибирск ТЦ "Мега"</option>
+          <option value="38">Омск ТЦ "Мега"</option>
+          <option value="39">РостовНаДону ТРК "Мегацентр Горизонт"</option>
+          <option value="40">РостовНаДону ТРК "Мегацентр Горизонт" Островной</option>
+          <option value="41">РостовНаДону ТЦ "Мега"</option>
+          <option value="42">СПб ТК "Невский Центр"</option>
+          <option value="43">СПб ТК "Сенная"</option>
+          <option value="44">Самара ТЦ "Мелодия"</option>
+          <option value="45">Самара ТЦ "ПаркХаус"</option>
+          <option value="46">Сергиев Посад ТЦ "7Я"</option>
+          <option value="47">Сургут ТРЦ "Сити Молл"</option>
+          <option value="48">Томск ТРЦ "Изумрудный Город"</option>
+          <option value="49">Тюмень ТРЦ "Кристалл"</option>
+          <option value="50">Тюмень ТЦ "Гудвин"</option>
+          <option value="51">Тюмень ТЦ "Зеленый Берег"</option>
+          <option value="52">Уфа ТК "Центральный"</option>
+          <option value="53">Уфа ТЦ "Семья" 2</option>
+          <option value="54">Химки ТЦ "Мега"</option>
+          <option value="55">Цифровой склад 1С-Онлайн</option>
+          <option value="56">Чехов ТРЦ "Карнавал"</option>
+          <option value="57">Якутск Орджоникидзе, 56</option>
+          <option value="58">Якутск ТЦ "Центральный"</option>
+          <option value="59">Ярославль ТЦ "Альтаир"</option>
         </select>
+        <br>
+        <label for="item_id">Choose item's id (range 0-22169):</label>
+        <input type="number" id="item_id" name="item_id" min="0" max="22169">
         <br>
         <input type="submit" value="Submit">
       </form>
